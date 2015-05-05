@@ -1,39 +1,59 @@
 <html>
     <header>
         <title>MongoDB Deployment Planner</title>
+        <style>
+            div.one {
+                border-style: solid;
+                border-width: 5px;
+            }
+            
+            div.two {
+                border-style: solid;
+                border-width: medium;
+            }
+            
+            div.three {
+                border-style: solid;
+                border-width: 1px;
+            }
+        </style>
     </header>
     <body>
         <div class="operationDescriptor">
-        <form>
+        <form class="two">
             Operation name: <input type="text" name="opName"><br>
             Operation type:<select>
               <option value="findOp">find</option>
+              <option value="updateOp">insert</option>
               <option value="updateOp">update</option>
               <option value="removeOp">remove</option>
               <option value="commandOp">command</option>
               <option value="commandOp">aggregation</option>
             </select><br>
-            predicates: <input type="text" name="predicateText"><br>
-            projections: <input type="text" name="projectionTxt"><br>
-
-            result set size: <div>
-                Returns<select>
-                  <option value="ave">ave</option>
-                  <option value="toal">num</option>
+            predicates: <input type="text" name="predicateText"> JSON<br>
+            projections: <input type="text" name="projectionTxt"> JSON<br>
+            Frequency
+                <input type="number" name="projectionTxt">
+                per <select>
+                  <option value="rsSizeB">millesecond</option>
+                  <option value="rsSizeKB">second</option>
+                  <option value="rsSizeMM">mintue</option>
+                  <option value="rsSizeGB">hour</option>
+                </select><br>
+            <div class="two">
+                <h4>Result Set</h4>
+                <select>
+                  <option value="projectedAve">ave</option>
+                  <option value="projectedTotal">total</option>
+                  <option value="projectedMax">max</option>
                 </select>
-                <input type="number" name="rsNumDocs"> documents<br>
-                totaling: <input type="number" name="rsSize"> <select>
+                <input type="number" name="rNumDocs"> documents, 
+                totaling <input type="number" name="rsSize"> <select>
                   <option value="rsSizeB">bytes</option>
                   <option value="rsSizeKB">kb</option>
                   <option value="rsSizeMM">mb</option>
                   <option value="rsSizeGB">gb</option>
-                </select><br>
-            <div>
-
-            Durablilty: <input type="text" name="projectionTxt"><br>
-            Availability: <input type="text" name="projectionTxt"><br>
-            Consistency: <input type="text" name="projectionTxt"><br>
-            Frequency: <div>
+                </select> at a frequency of 
                 <input type="number" name="projectionTxt">
                 per <select>
                   <option value="rsSizeB">millesecond</option>
@@ -41,19 +61,63 @@
                   <option value="rsSizeMM">mintue</option>
                   <option value="rsSizeGB">hour</option>
                 </select>
-            <div>
-            SLA: <div>
-                <input type="number" name="slaLatency">
+            </div><br>
+            <div class="two">
+                <h4>Durablilty</h4>
+                Write Concern:<input type="number" name="durNum"><br>
+                Tags <input type="test" name="durTag"> ',' delimeted list<br>
+                <input type="checkbox" name="durabilty" value="journal">journal<br>
+                <input type="checkbox" name="durabilty" value="fsync" checked>fsync
+            </div><br>
+            <div class="two">
+                <h4>Consistency:</h4><select>
+                    <option value="primary">PRIMARY</option>
+                    <option value="primaryPreferred">PRIMARY-PREFERRED</option>
+                    <option value="secondary">SECONDARY</option>
+                    <option value="secondaryPreferred">SECONDARY-PREFERRED</option>
+                    <option value="nearest">NEAREST</option>
+                </select>, 
+                with tags <input type="test" name="durTag"> ',' delimeted list
+            </div><br>
+            <div class="two" >
+                <h4>Service Level Agreement</h4>
+                Latency <input type="number" name="slaLatency">
                 <select>
                   <option value="rsSizeB">milleseconds</option>
                   <option value="rsSizeKB">seconds</option>
                   <option value="rsSizeMM">mintues</option>
                   <option value="rsSizeGB">hours</option>
                 </select>
-                <input type="number" name="slaPercentile">%tile
-            <div>
-            Growth Projections: <input type="text" name="projectionTxt"><br>
-            Schema Descriptor: <input type="text" name="projectionTxt"><br>
+                <input type="number" name="slaPercentile">%tile<br>
+                 Availability <input type="text" name="projectionTxt">%<br>
+                Minimum time to resolution <input type="number" name="minTimeRecovery"> hours
+            </div><br>
+            <div class="two">
+                <h4>Growth</h4>
+                Result Set <select>
+                  <option value="projectedAve">ave</option>
+                  <option value="projectedTotal">total</option>
+                  <option value="projectedMax">max</option>
+                </select>
+                <input type="number" name="rNumDocs"> documents, 
+                totaling <input type="number" name="rsSize"> <select>
+                  <option value="rsSizeB">bytes</option>
+                  <option value="rsSizeKB">kb</option>
+                  <option value="rsSizeMM">mb</option>
+                  <option value="rsSizeGB">gb</option>
+                </select> at a frequency of 
+                <input type="number" name="projectionTxt">
+                per <select>
+                  <option value="rsSizeB">millesecond</option>
+                  <option value="rsSizeKB">second</option>
+                  <option value="rsSizeMM">mintue</option>
+                  <option value="rsSizeGB">hour</option>
+                </select>
+            </div><br>
+            <div class="two">
+                <h4>Schema Descriptor</h4>
+                <input type="text" name="projectionTxt"> URI<br>
+            </div>
         </form>
     </body>
 </html>
