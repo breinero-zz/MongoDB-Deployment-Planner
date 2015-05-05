@@ -1,0 +1,60 @@
+<html>
+    <header>
+        <title>MongoDB Deployment Planner</title>
+    </header>
+    <body>
+        <div class="operationDescriptor">
+        <form>
+            Operation name: <input type="text" name="opName"><br>
+            Operation type:<select>
+              <option value="findOp">find</option>
+              <option value="updateOp">update</option>
+              <option value="removeOp">remove</option>
+              <option value="commandOp">command</option>
+              <option value="commandOp">aggregation</option>
+            </select><br>
+            predicates: <input type="text" name="predicateText"><br>
+            projections: <input type="text" name="projectionTxt"><br>
+
+            result set size: <div>
+                Returns<select>
+                  <option value="ave">ave</option>
+                  <option value="toal">num</option>
+                </select>
+                <input type="number" name="rsNumDocs"> documents<br>
+                totaling: <input type="number" name="rsSize"> <select>
+                  <option value="rsSizeB">bytes</option>
+                  <option value="rsSizeKB">kb</option>
+                  <option value="rsSizeMM">mb</option>
+                  <option value="rsSizeGB">gb</option>
+                </select><br>
+            <div>
+
+            Durablilty: <input type="text" name="projectionTxt"><br>
+            Availability: <input type="text" name="projectionTxt"><br>
+            Consistency: <input type="text" name="projectionTxt"><br>
+            Frequency: <div>
+                <input type="number" name="projectionTxt">
+                per <select>
+                  <option value="rsSizeB">millesecond</option>
+                  <option value="rsSizeKB">second</option>
+                  <option value="rsSizeMM">mintue</option>
+                  <option value="rsSizeGB">hour</option>
+                </select>
+            <div>
+            SLA: <div>
+                <input type="number" name="slaLatency">
+                <select>
+                  <option value="rsSizeB">milleseconds</option>
+                  <option value="rsSizeKB">seconds</option>
+                  <option value="rsSizeMM">mintues</option>
+                  <option value="rsSizeGB">hours</option>
+                </select>
+                <input type="number" name="slaPercentile">%tile
+            <div>
+            Growth Projections: <input type="text" name="projectionTxt"><br>
+            Schema Descriptor: <input type="text" name="projectionTxt"><br>
+        </form>
+    </body>
+</html>
+
