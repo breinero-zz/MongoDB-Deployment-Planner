@@ -109,3 +109,20 @@ Example: Page Faulting exceeds a rate of 10,000 faults/second for an observed du
 	}
 }
 ```
+
+##TODOs
+
+Look for all possible constraints in the UI fields
+
+
+### Suggested features
+Preview window on the  on the right
+Hash url access 
+Modal window FOR SAVE requires user contact information 
+Default values in fields
+
+###Phased input mode (user work flow)
+- step one query plans what do I want to do
+- step two more nitty-gritty how fast / how much (engagement invite)
+- step SLA on a path to real documentation (engagement invite)
+    
